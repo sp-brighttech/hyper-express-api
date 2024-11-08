@@ -5,12 +5,12 @@ export default interface UserSchema {
     industry: string;
     company_size: string;
     website_url: string;
-    contact_name: number;
+    contact_name: string;
     job_title: string;
     email_address: string;
     phone_number: string;
     password: string;
     created_at?: Date;
     updated_at?: Date;
-    deleted_at: Date | null;
+    deleted_at?: Date | null;
 }

@@ -9,7 +9,7 @@ export default class UserRepository implements UserRepositoryInterface {
         this.userModel = new UserModel();
     }
 
-    async store(data: User): Promise<User | null> {
+    async create(data: User): Promise<User | null> {
         return await this.userModel.create(data)
     }
 }

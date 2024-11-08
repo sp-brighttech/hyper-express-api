@@ -40,14 +40,13 @@ export default class BaseModel<T extends Document> {
     public async create(data: OptionalUnlessRequiredId<T>): Promise<WithId<T>> {
         // Set created_at if not already set, and always set updated_at
         const currentTimestamp = new Date();
-
         // Ensure created_at is set if not already present
         if (!data.created_at) {
             data.created_at = currentTimestamp;
         }
-
         // Always update updated_at
         data.updated_at = currentTimestamp;
+        data.deleted_at = null; // Ensure deleted_at is null
         const result = await this.collection.insertOne(data);
         return {...data, _id: result.insertedId} as WithId<T>;
     }
